@@ -1,5 +1,5 @@
 Game module
-==========
+===========
 
 .. automodule:: connect4.game
    :members:

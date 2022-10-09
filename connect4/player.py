@@ -78,5 +78,7 @@ class Connect4HumanPlayer(Connect4Player):
         int
             Chosen column index
         """
-        input_str = input("Choose column:")
-        return int(input_str)
+        while True:
+            input_str = input(f"{self.colour.name} player. Choose column index (0-{self.board.columns-1}):")
+            if input_str.isdigit() and int(input_str) < self.board.columns:
+                return int(input_str)

@@ -7,3 +7,4 @@ API reference
    game
    board
    player
+   artist
