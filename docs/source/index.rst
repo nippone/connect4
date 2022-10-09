@@ -11,6 +11,7 @@ Welcome to connect4's documentation!
    :caption: Contents:
 
    install
+   quickstart
    reference/api/index
    changelog
 

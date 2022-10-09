@@ -19,3 +19,12 @@ pre-commit install
 
 ## Quick start
 
+### Human VS Human
+````
+python scripts/connect4_human_vs_human.py
+````
+
+### Human VS (dummy) AI
+````
+python scripts/connect4_dummy_vs_human.py
+````
