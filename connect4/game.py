@@ -1,4 +1,3 @@
-import logging
 from enum import Enum, auto
 from itertools import cycle
 
@@ -82,10 +81,7 @@ class Connect4Game:
             if self.board.max_num_connected_disks(disk) >= 4:
                 self.artist.draw_gameover(curr_player.colour)
                 if curr_player.colour == Connect4DiskColour.red:
-                    logging.info("Red wins.")
                     return Connect4GameResult.red_wins
                 elif curr_player.colour == Connect4DiskColour.yellow:
-                    logging.info("Yellow wins.")
                     return Connect4GameResult.yellow_wins
-        logging.info("Draw game.")
         return Connect4GameResult.draw
