@@ -76,16 +76,18 @@ class Connect4ShortSightedAI(Connect4Player):
     @staticmethod
     def _get_move_score(max_num_connections: int, weight_factor: float = 1.0) -> float:
         """
-        Get a score based on the number of connections created by a move.
+         Get a score based on the number of connections created by a move.
 
-        Parameters
-        ----------
-        max_num_connections: int
-            max number of disks connected by a move
-        Returns
-        -------
-        float
-            Chosen column index
+         Parameters
+         ----------
+         max_num_connections: int
+             max number of disks connected by a move
+        weight_factor: float
+             Weighting factor to be applied on the calculated score
+         Returns
+         -------
+         float
+             Chosen column index
         """
         if max_num_connections >= 4:
             return weight_factor * 1000

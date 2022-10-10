@@ -1,5 +1,5 @@
 Player module
-==========
+=============
 
 .. automodule:: connect4.player
    :members:
