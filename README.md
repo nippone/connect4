@@ -11,7 +11,7 @@ conda activate connect4
 cd /path/to/package
 pip install .
 ````
-**For developers:** install the test framework and the pre-commit hooks
+**For developers:** install the connect4 package with the optional development dependencies and install the pre-commit hooks
 ````
 pip install -e ".[dev]"
 pre-commit install
@@ -24,7 +24,12 @@ pre-commit install
 python scripts/connect4_human_vs_human.py
 ````
 
-### Human VS (dummy) AI
+### Human VS dummy
 ````
 python scripts/connect4_dummy_vs_human.py
+````
+
+### Human VS (short-sighted) AI
+````
+python scripts/connect4_short_sighted_AI_vs_human.py
 ````
