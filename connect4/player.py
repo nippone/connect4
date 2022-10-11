@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from random import randrange
-from typing import List
 
 import numpy as np
 
@@ -31,10 +30,6 @@ class Connect4Player(ABC):
         self.board = board
         self.colour = colour
 
-    def _valid_moves(self) -> List[int]:
-        disks_per_column = [self.board.disks_in_column(col_idx) for col_idx in range(self.board.columns)]
-        return [column_idx for column_idx, disks in enumerate(disks_per_column) if disks < self.board.rows]
-
     @abstractmethod
     def choose_column(self) -> int:
         """
@@ -64,7 +59,7 @@ class Connect4DummyPlayer(Connect4Player):
         int
             Chosen column index
         """
-        valid_columns = self._valid_moves()
+        valid_columns = self.board.available_columns()
         return valid_columns[randrange(len(valid_columns))]
 
 
@@ -105,7 +100,7 @@ class Connect4ShortSightedAI(Connect4Player):
         int
             Chosen column index
         """
-        valid_columns = self._valid_moves()
+        valid_columns = self.board.available_columns()
         opponent_colour = Connect4DiskColour.yellow if self.colour == Connect4DiskColour.red else Connect4DiskColour.red
         connections_my_move = [
             self.board.max_num_connected_disks(Connect4Disk(self.board.disks_in_column(c), c, self.colour))

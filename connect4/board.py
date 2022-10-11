@@ -140,6 +140,18 @@ class Connect4Board:
         """
         return len([disk for disk in self._disks if disk.column == column_index])
 
+    def available_columns(self) -> List[int]:
+        """
+        Get the list of the available columns, i.e. where there is space for more disks.
+
+        Returns
+        -------
+        List[int]
+            list of the available column indices
+        """
+        disks_per_column = [self.disks_in_column(col_idx) for col_idx in range(self.columns)]
+        return [column_idx for column_idx, disks in enumerate(disks_per_column) if disks < self.rows]
+
     def _disks_by_colour(self, colour: Connect4DiskColour) -> List[Connect4Disk]:
         """
         Filter inserted disks by colour.
