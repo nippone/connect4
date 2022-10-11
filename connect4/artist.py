@@ -109,21 +109,26 @@ class Connect4ArtistMatplotlib(Connect4Artist):
         self._axis.set_xticklabels(range(0, self.board.columns))
         self._axis.set_yticklabels(range(0, self.board.rows))
         self._axis.grid(which="minor", color="k", linewidth=2)
-        self.cmap = colors.ListedColormap(["y", "w", "r"])
+        self._cmap = colors.ListedColormap(["y", "w", "r"])
+        self._vmin = np.min([e.value for e in Connect4DiskColour])
+        self._vmax = np.max([e.value for e in Connect4DiskColour])
         plt.show(block=False)
 
     def _refresh(self) -> None:
+        """Refresh graphical representation of the board."""
+
         self._fig.canvas.draw()
         self._fig.canvas.flush_events()
 
     def draw(self) -> None:
         """Draw graphical representation of the board."""
+
         self._axis.imshow(
             self.board.as_matrix(),
             origin="lower",
-            cmap=self.cmap,
-            vmin=Connect4DiskColour.yellow.value,
-            vmax=Connect4DiskColour.red.value,
+            cmap=self._cmap,
+            vmin=self._vmin,
+            vmax=self._vmax,
         )
         self._refresh()
 
