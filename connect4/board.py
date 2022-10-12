@@ -75,7 +75,7 @@ def consecutive_elements(s: Set[Any], elem: Any, order_fun: Callable[[Any], int]
     if elem not in s:
         raise ValueError("elem must be present in the set.")
 
-    sorted_lst = sorted(list(s), key=order_fun)
+    sorted_lst = sorted(s, key=order_fun)
     elem_idx = sorted_lst.index(elem)
     return [e for idx, e in enumerate(sorted_lst) if idx - order_fun(e) == elem_idx - order_fun(elem)]
 
